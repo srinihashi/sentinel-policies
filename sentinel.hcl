@@ -1,3 +1,3 @@
-policy "restrict-providers" {
+policy "allowed-providers" {
     enforcement_level = "hard-mandatory"
 }
