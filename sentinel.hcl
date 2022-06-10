@@ -1,5 +1,5 @@
 module "tfplan-functions" {
-  source = "https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfplan-functions/tfplan-functions.sentinel"
+  source = "github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfplan-functions/tfplan-functions.sentinel"
 }
     
 policy "allowed-providers" {
