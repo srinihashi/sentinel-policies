@@ -10,12 +10,7 @@ import "tfplan-functions" as plan
 import "aws-functions" as aws
 
 # List of resources that are required to have name/value tags
-param resource_types default [
-  "aws_instance",
-  "aws_s3_bucket",
-  "aws_db_instance",
-  "aws_rds_cluster"
-]
+param resource_types default ["aws_instance", "aws_s3_bucket", "aws_db_instance", "aws_rds_cluster"]
 
 # List of mandatory tags
 param mandatory_tags default ["tag:tag1", "tag:tag2", "tag:tag3"]
