@@ -10,10 +10,16 @@ import "tfplan-functions" as plan
 import "aws-functions" as aws
 
 # List of resources that are required to have name/value tags
-param resource_types default ["aws_instance", "aws_s3_bucket", "aws_db_instance", "aws_rds_cluster"]
+param resource_types default [
+  "aws_s3_bucket",
+  "aws_instance",
+]
 
 # List of mandatory tags
-param mandatory_tags default ["tag:tag1", "tag:tag2", "tag:tag3"]
+# Note that the tags here are for internal HashiCorp usage
+# You should assign your own tags in a "mandatory_tags" parameter in your policy set
+# Or change the tags here in the policy.
+param mandatory_tags default ["Name", "ttl", "owner", "se-region", "purpose", "terraform"]
 
 # Get all AWS Resources with standard tags
 allAWSResourcesWithStandardTags =
@@ -24,7 +30,7 @@ allAWSResourcesWithStandardTags =
 violatingAWSResources =
         plan.filter_attribute_not_contains_list(allAWSResourcesWithStandardTags,
                         "tags", mandatory_tags, true)
-        print("Learn more about tagging requirements")
+
 # Main rule
 main = rule {
   length(violatingAWSResources["messages"]) is 0
