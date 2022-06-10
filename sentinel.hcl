@@ -9,3 +9,7 @@ policy "aws_approved_ami" {
 policy "restrict-ec2-instance-type" {
     enforcement_level = "hard-mandatory"
 }
+
+policy "tags" {
+    enforcement_level = "hard-mandatory"
+}
